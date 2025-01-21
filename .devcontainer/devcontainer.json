@@ -1,0 +1,117 @@
+{
+  "name": "Python e LangChain",
+  "build": {
+    "dockerfile": "../Dockerfile"
+  },
+  "remoteUser": "vscode",
+  "mounts": [
+    "source=${localWorkspaceFolder}/app,target=/app,type=bind"
+  ],
+  "settings": {
+    "explorer.compactFolders": false,
+    "python.pythonPath": "/env/.venv/bin/python",
+    "terminal.integrated.shell.linux": "/bin/bash",
+    // 🐍 Interpretador Python (configuração do ambiente virtual)
+    "python.defaultInterpreterPath": "${workspaceFolder}/env/venv/bin/python",
+    // 📁 Caminhos extras para análise (suporte a pacotes no ambiente virtual)
+    "python.analysis.extraPaths": [
+      "${workspaceFolder}/env/venv/lib/site-packages"
+    ],
+    // ✨ Configuração do Pylance (modo estrito)
+    "python.analysis.typeCheckingMode": "strict",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.diagnosticMode": "workspace",
+    "python.analysis.useLibraryCodeForTypes": true,
+    // 🛠️ Configuração do Mypy (análise estática de tipos)
+    "python.linting.mypyEnabled": true,
+    "python.linting.mypyArgs": [
+      "--config-file",
+      "${workspaceFolder}/mypy.ini"
+    ],
+    // 🛠️ Configuração do Linter (Flake8)
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [
+      "--max-line-length=88",
+      "--ignore=E203,W503"
+    ],
+    "python.linting.pylintEnabled": false, // Desativa pylint para evitar conflitos
+    // ⚡ Autoformatação com Black + isort
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "[python]": {
+      "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit"
+      },
+      "editor.formatOnSave": true
+    },
+    // 🔄 Organização automática de imports com isort
+    "python.sortImports.args": [
+      "--profile",
+      "black"
+    ],
+    // 🐞 Configuração do Debugger Python
+    "debugpy.logLevel": "info",
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": [
+      "--cov=myapp", // Medir cobertura de testes
+      "--cov-report=html", // Gerar relatório HTML de cobertura
+      "--junitxml=test-results.xml" // Gerar relatório JUnit para CI/CD
+    ],
+    // 🏗️ Outras configurações úteis
+    "files.autoSave": "afterDelay",
+    "files.exclude": {
+      "**/__pycache__": true,
+      "**/.pytest_cache": true,
+      "**/.mypy_cache": true
+    },
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "code-runner.runInTerminal": true,
+    "code-runner.cleanPreviousOutput": true,
+    "code-runner.executorMap": {
+      "python": "clear ; python3 -u"
+    },
+    "code-runner.ignoreSelection": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
+    "editor.fontSize": 18,
+    "window.zoomLevel": 0,
+  },
+  "extensions": [
+    // Extensões Gerais
+    "streetsidesoftware.code-spell-checker", // Verificação ortográfica para código e comentários.
+    "streetsidesoftware.code-spell-checker-portuguese-brazilian", // Verificação ortográfica em português brasileiro.
+    "PKief.material-icon-theme", // Tema de ícones para melhorar a visualização de arquivos e pastas.
+    "Gruntfuggly.todo-tree", // Gerenciamento de comentários `TODO`, `FIXME`, etc.
+    "bierner.markdown-preview-github-styles", // Melhora a visualização de arquivos Markdown com estilo GitHub.
+    "eamodio.gitlens", // Melhora a integração com Git, mostrando histórico de alterações e autoria do código.
+    "junhan.vscode-code-runner", // Execução rápida de código em diferentes linguagens.
+    // Python
+    "ms-python.python", // Suporte oficial para Python no VS Code.
+    "ms-python.debugpy", // Depuração de código Python.
+    "ms-python.isort", // Organização automática de imports.
+    "ms-python.black-formatter", // Formatação automática com Black.
+    "ms-python.flake8", // Análise de código Python.
+    "ms-python.vscode-pylance", // Análise de tipos avançada e sugestões de código.
+    "ms-python.mypy", // Integração com Mypy para análise estática de tipos.
+    "KevinRose.vsc-python-indent", // Indentação automática no estilo Python.
+    "njpwerner.autodocstring", // Geração automática de docstrings.
+    // Produtividade
+    "sourcegraph.cody-ai", // IA para sugestões de código
+    //FastAPI
+    "tiangolo.fastapi", // Extensão oficial para desenvolvimento com FastAPI.
+    "ms-azuretools.vscode-docker", // Suporte a Docker para rodar aplicações FastAPI.
+    "humao.rest-client", // Teste de endpoints da API diretamente no VS Code.
+    //Jupyter
+    "ms-toolsai.jupyter", //Suporte a notebooks Jupyter (essencial).
+    "ms-toolsai.jupyter-keymap", //Atalhos de teclado para Jupyter (opcional).
+    "ms-toolsai.jupyter-renderers", //Melhora a renderização de gráficos e markdown (opcional).
+    "ms-toolsai.jupyter-themes", //Personalização de temas para notebooks (opcional).
+  ],
+  "forwardPorts": [
+    8888
+  ],
+  "remoteUser": "vscode",
+  "postStartCommand": "/env/.venv/bin/jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root"
+}

@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  jupyter:
+    build: .
+    volumes:
+      - ./app:/app
+    ports:
+      - "8888:8888"
+    tty: true  # equivalente ao -t
+    stdin_open: true  # equivalente ao -i
+    restart: always

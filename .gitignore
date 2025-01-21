@@ -1,0 +1,85 @@
+# Ignorar arquivos específicos do Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Ignorar arquivos específicos do Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb
+
+# Ignorar arquivos específicos do Docker
+**/docker-compose.override.yml
+**/.dockerignore
+**/Dockerfile.dev
+
+# Ignorar arquivos específicos do VS Code
+#.vscode/
+#!.vscode/settings.json
+!.vscode/tasks.json
+#!.vscode/launch.json
+!.vscode/extensions.json
+
+# Ignorar arquivos de ambiente virtual
+.env
+.venv/
+venv/
+ENV/
+env/
+
+# Ignorar arquivos de configuração local
+local_settings.py
+*.local.yml
+*.local.yaml
+
+# Ignorar arquivos de log e cache
+*.log
+*.sqlite3
+*.cache
+*.pot
+*.pyc
+*.db
+
+# Ignorar arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar arquivos de IDE/Editor
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# Ignorar arquivos de dependências
+node_modules/
+bower_components/
+
+# Ignorar arquivos de build e distribuição
+dist/
+build/
+*.tar.gz
+*.whl
+
+# Ignorar arquivos de teste e cobertura
+.coverage
+htmlcov/
+.pytest_cache/
+test-reports/

@@ -1,0 +1,16 @@
+google.generativeai
+black
+debugpy
+flake8
+isort
+mypy
+types-requests
+types-setuptools
+pytest
+pytest-bdd
+pytest-cov
+pytest-mock
+uvicorn
+httpx
+strawberry-graphql
+ariadne
